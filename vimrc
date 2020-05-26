@@ -7,12 +7,10 @@ set nocompatible
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI Config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" syntax on                               " Turn on syntax highlighting.
 syntax enable                           " Turn on syntax highlighting.
 filetype plugin on                      " Enable vim to recognize different file types
 colorscheme medic_chalk                 " Color Scheme
 set shortmess+=I                        " Disable the default Vim startup message.
-set ruler                               " Display current cursor position
 set showcmd                             " Display an incomplete command
 set hidden                              " Hide the unsaved buffers
 set backspace=indent,eol,start          " Backspace behaves normally
@@ -113,4 +111,5 @@ nnoremap ,route :-1read snippets/.skeleton.route.js<CR>fi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File type specific settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType javascript setlocal tabstop=2 softtabstop=2 expandtab shiftwidth=2 omnifunc=javascriptcomplete#CompleteJS 
+" Not using it for now. May use in future when I need it for other files
+" autocmd FileType javascript setlocal tabstop=2 softtabstop=2 expandtab shiftwidth=2 omnifunc=javascriptcomplete#CompleteJS 
