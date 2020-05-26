@@ -11,4 +11,4 @@ I have tried my best to not use external plugins. So, they won't break if you us
 However, in vimrc file, I am using a theme which I had downloaded from external source. You should download
 that theme or just use the built-in themes which come with vim editor.
 
-
+![img](https://github.com/sojharo/dotfiles/blob/master/docs/vim.png)
