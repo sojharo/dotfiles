@@ -2,8 +2,6 @@
 " Author: Sojharo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI Config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -17,16 +15,16 @@ set backspace=indent,eol,start          " Backspace behaves normally
 
 " Finding Files "
 " Provides tab-completion for all file-related tasks
-set path+=**                            " Search down into subfolders
+set path+=server/**,client/**,src/**    " Search down into subfolders
 set wildmenu                            " display completion matches in a status line
 
 " Split Config "
 set splitbelow                          " Open new vertical split bottom
 set splitright                          " Open new horizontal splits right
-noremap <silent> <C-Left> :vertical resize +3<CR>
-noremap <silent> <C-Right> :vertical resize -3<CR>
-noremap <silent> <C-Up> :resize +3<CR>
-noremap <silent> <C-Down> :resize -3<CR>
+nnoremap <silent> <C-Left> :vertical resize +3<CR>
+nnoremap <silent> <C-Right> :vertical resize -3<CR>
+nnoremap <silent> <C-Up> :resize +3<CR>
+nnoremap <silent> <C-Down> :resize -3<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spaces, Tabs and Completion 
@@ -54,11 +52,11 @@ set number                              " Show line numbers.
 set relativenumber                      " Show relative line numbers
 
 " Automatic toggling between line number modes "
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Cursor Line Configuration
@@ -66,11 +64,11 @@ set relativenumber                      " Show relative line numbers
 set cursorline                          " Highlight current line
 
 " Automatic toggling cursor highlight on different modes 
-:augroup cursorlinetoggle
-:  autocmd!
-:  autocmd InsertLeave * set cursorline
-:  autocmd InsertEnter * set nocursorline
-:augroup END
+augroup cursorlinetoggle
+  autocmd!
+  autocmd InsertLeave * set cursorline
+  autocmd InsertEnter * set nocursorline
+augroup END
   
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Status line  Configuration
