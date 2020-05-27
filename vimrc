@@ -104,7 +104,8 @@ set statusline+=\
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap ,route :-1read snippets/.skeleton.route.js<CR>fi
+" Be careful to use your own path here instead of mine
+nnoremap ,route :-1read $HOME/Learning/dotfiles/snippets/skeleton.route.js<CR>fi
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File type specific settings
