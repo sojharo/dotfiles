@@ -1,6 +1,7 @@
 
 # alaises
 alias l='ls -l'
+alias x='exit'
 
 # User specific environment and startup programs
 PATH=$PATH:$HOME/bin
