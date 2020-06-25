@@ -112,3 +112,11 @@ nnoremap ,route :-1read $HOME/Learning/dotfiles/snippets/skeleton.route.js<CR>fi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Not using it for now. May use in future when I need it for other files
 " autocmd FileType javascript setlocal tabstop=2 softtabstop=2 expandtab shiftwidth=2 omnifunc=javascriptcomplete#CompleteJS 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_linters = { 'javascript': ['standard'] }
+let g:ale_fixers = {'javascript': ['standard']}
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
