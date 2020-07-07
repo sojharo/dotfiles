@@ -91,6 +91,8 @@ set statusline+=%#DiffDelete#
 set statusline+=\ %f
 set statusline+=%m\
 set statusline+=%=
+set statusline+=%<
+set statusline+=\ %{strftime('%b\ %d\ %H:%M\ %p\ ')} 
 set statusline+=%#CursorColumn#
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
