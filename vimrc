@@ -7,7 +7,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                           " Turn on syntax highlighting.
 filetype plugin on                      " Enable vim to recognize different file types
-colorscheme medic_chalk                 " Color Scheme
+colorscheme monokai                     " Color Scheme
 set shortmess+=I                        " Disable the default Vim startup message.
 set showcmd                             " Display an incomplete command
 set hidden                              " Hide the unsaved buffers
@@ -104,15 +104,22 @@ set statusline+=\ %L
 set statusline+=\ 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Snippets
+" snippets & mappings for making coding easy
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Be careful to use your own path here instead of mine
+" be careful to use your own path here instead of mine
 nnoremap ,route :-1read $HOME/Learning/dotfiles/snippets/skeleton.route.js<CR>fi
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" External Vim Configurations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Be careful to use your own path here instead of mine
+source $HOME/Learning/dotfiles/vimconfig/autoclose.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File type specific settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Not using it for now. May use in future when I need it for other files
+" Further discussion on https://www.reddit.com/r/vim/comments/gqxmcd/just_published_my_vim_configuration_trying_to_go/
 " autocmd FileType javascript setlocal tabstop=2 softtabstop=2 expandtab shiftwidth=2 omnifunc=javascriptcomplete#CompleteJS 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,3 +129,13 @@ let g:ale_linters = { 'javascript': ['standard'] }
 let g:ale_fixers = {'javascript': ['standard']}
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Other Resources
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" For vim colorschemes:
+"
+" https://github.com/crusoexia/vim-monokai
+" https://github.com/ParamagicDev/vim-medic_chalk
+"
+" vim colorschemes are stored in ~/.vim/colors on macos
