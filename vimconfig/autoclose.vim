@@ -1,4 +1,5 @@
 " InspiredBy: https://medium.com/vim-drops/custom-autoclose-mappings-1ff90f45c6f5
+" https://alldrops.info/posts/vim-drops/2018-05-15_understand-vim-mappings-and-create-your-own-shortcuts/
 
 "-- AUTOCLOSE --
 "autoclose and position cursor to write text inside

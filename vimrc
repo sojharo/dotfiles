@@ -45,6 +45,9 @@ set hlsearch                            " highlight matches
 set ignorecase                          " Ignore case in searches by default
 set smartcase                           " But make it case sensitive if an uppercase is entered
 
+" Remove the highlighting when I insert ,<space>
+nnoremap <silent> ,<space> :nohlsearch<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Line Numbering
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
