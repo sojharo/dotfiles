@@ -1,17 +1,6 @@
 
-# alaises - TODO move them in their own file https://thevaluable.dev/zsh-install-configure/
-alias l='ls -l'
-alias x='exit'
-alias gs='git status'
-alias gd='git diff'
-alias gb='git branch'
-alias gc='git checkout'
-alias cd..='cd ..'
-alias ck='cd ~/RestructureWork'
-alias ns='npm start'
-alias nr='npm run'
-alias gpm='git pull origin master'
-alias gps='git pull origin staging'
+# alaises
+source $HOME/Learning/dotfiles/aliases/aliases
 
 # User specific environment and startup programs
 PATH=$PATH:$HOME/bin
