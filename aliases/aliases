@@ -1,12 +1,18 @@
 alias l='ls -l'
 alias x='exit'
+alias grep='grep --color=auto'
+
+# git aliases
 alias gs='git status'
 alias gd='git diff'
 alias gb='git branch'
 alias gc='git checkout'
 alias cd..='cd ..'
-alias ck='cd ~/RestructureWork'
 alias ns='npm start'
 alias nr='npm run'
 alias gpm='git pull origin master'
 alias gps='git pull origin staging'
+
+# easy navigation
+alias ck='cd ~/RestructureWork' # My Projects Folder
+alias dotfiles='cd ~/Learning/dotfiles'
