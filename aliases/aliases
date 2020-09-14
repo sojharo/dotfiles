@@ -1,3 +1,4 @@
+alias ls='ls -G'
 alias l='ls -l'
 alias x='exit'
 alias grep='grep --color=auto'

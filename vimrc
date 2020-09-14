@@ -76,7 +76,7 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Status line  Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-source $HOME/Learning/dotfiles/vimconfig/statusline.vim
+source $HOME/Learning/dotfiles/config_vim/statusline.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " snippets & mappings for making coding easy
@@ -88,7 +88,7 @@ nnoremap ,route :-1read $HOME/Learning/dotfiles/snippets/skeleton.route.js<CR>fi
 " External Vim Configurations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Be careful to use your own path here instead of mine
-source $HOME/Learning/dotfiles/vimconfig/autoclose.vim
+source $HOME/Learning/dotfiles/config_vim/autoclose.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File type specific settings
