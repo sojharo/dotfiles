@@ -1,5 +1,5 @@
 # alaises
-source $HOME/Learning/dotfiles/aliases/aliases
+source $HOME/dotfiles/aliases/aliases
 
 # User specific environment and startup programs
 PATH=$PATH:$HOME/bin
@@ -24,7 +24,7 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Cursor Mode (like vim)
-fpath=($HOME/Learning/dotfiles/config_zsh $fpath)
+fpath=($HOME/dotfiles/config_zsh $fpath)
 autoload -Uz cursor_mode; cursor_mode
 
 # For prompt

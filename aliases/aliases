@@ -16,4 +16,4 @@ alias gps='git pull origin staging'
 
 # easy navigation
 alias ck='cd ~/RestructureWork' # My Projects Folder
-alias dotfiles='cd ~/Learning/dotfiles'
+alias dotfiles='cd ~/dotfiles'
