@@ -2,17 +2,22 @@ alias ls='ls -G'
 alias l='ls -l'
 alias x='exit'
 alias grep='grep --color=auto'
+alias cd..='cd ..'
 
 # git aliases
 alias gs='git status'
 alias gd='git diff'
+alias gdd='git log --pretty=format:"[%h] %ae, %ar: %s" --stat' # commit history with changed files
+alias gds='git diff --stat'
 alias gb='git branch'
 alias gc='git checkout'
-alias cd..='cd ..'
-alias ns='npm start'
-alias nr='npm run'
+alias gf='git fetch'
 alias gpm='git pull origin master'
 alias gps='git pull origin staging'
+
+# nodejs aliases
+alias ns='npm start'
+alias nr='npm run'
 
 # easy navigation
 alias ck='cd ~/RestructureWork' # My Projects Folder

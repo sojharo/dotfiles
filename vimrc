@@ -62,15 +62,23 @@ augroup numbertoggle
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Cursor Line Configuration
+" Cursor Line and Column Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cursorline                          " Highlight current line
+set cursorcolumn                        " Highlight cursor column for code indents matching
 
 " Automatic toggling cursor highlight on different modes 
 augroup cursorlinetoggle
   autocmd!
   autocmd InsertLeave * set cursorline
   autocmd InsertEnter * set nocursorline
+augroup END
+  
+" Automatic toggling cursor column highlight on different modes 
+augroup cursorcolumntoggle
+  autocmd!
+  autocmd InsertLeave * set cursorcolumn
+  autocmd InsertEnter * set nocursorcolumn
 augroup END
   
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
