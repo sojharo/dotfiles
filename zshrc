@@ -30,6 +30,12 @@ autoload -Uz cursor_mode; cursor_mode
 # For prompt
 autoload -Uz myprompt; myprompt
 
+# Git completions added
+zstyle ':completion:*:*:git:' script /Users/sojharo/dotfiles/completions/git/git-completion.bash
+fpath=($HOME/dotfiles/completions/git $fpath)
+
+autoload -Uz compinit && compinit
+
 # User specific functions
 today() {
     echo -n "Today's date is: "
