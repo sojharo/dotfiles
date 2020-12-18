@@ -16,6 +16,7 @@ set backspace=indent,eol,start          " Backspace behaves normally
 " Finding Files "
 " Provides tab-completion for all file-related tasks
 set path+=server/**,client/**,src/**    " Search down into subfolders
+set path+=public/**
 set wildmenu                            " display completion matches in a status line
 
 " Split Config "
@@ -89,12 +90,16 @@ source $HOME/dotfiles/config_vim/statusline.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " snippets & mappings for making coding easy
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " be careful to use your own path here instead of mine
 nnoremap ,route :-1read $HOME/dotfiles/snippets/skeleton.route.js<CR>fi
+inoremap ,log console.log()<left>
+nnoremap ,/ I// <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " External Vim Configurations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Be careful to use your own path here instead of mine
 source $HOME/dotfiles/config_vim/autoclose.vim
 

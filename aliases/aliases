@@ -7,7 +7,8 @@ alias cd..='cd ..'
 # git aliases
 alias gs='git status'
 alias gd='git diff'
-alias gdd='git log --pretty=format:"[%h] %ae, %ar: %s" --stat' # commit history with changed files
+alias gld='git log --pretty=format:"[%h] %ae, %ar: %s" --stat' # commit history with changed files
+alias gls='git log --stat'
 alias gds='git diff --stat'
 alias gb='git branch'
 alias gc='git checkout'
