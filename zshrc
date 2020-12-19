@@ -36,6 +36,11 @@ fpath=($HOME/dotfiles/completions/git $fpath)
 
 autoload -Uz compinit && compinit
 
+# zmodload -i zsh/complist
+# zstyle ':completion:*' menu select
+# autoload predict-on
+# predict-on
+
 # User specific functions
 today() {
     echo -n "Today's date is: "
