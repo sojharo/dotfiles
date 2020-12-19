@@ -19,3 +19,7 @@ download that color scheme or just use the built-in themes which come with vim e
 ## Tmux Configuration
 
 ![img](https://github.com/sojharo/dotfiles/blob/master/docs/tmux.png)
+
+### TODO
+
+- .gitconfig (inspiration from https://medium.com/usevim/git-and-vimdiff-a762d72ced86)
