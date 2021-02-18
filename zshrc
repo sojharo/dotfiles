@@ -46,3 +46,13 @@ today() {
     echo -n "Today's date is: "
     date +"%A, %B %-d, %Y"
 }
+
+weather() {
+  city=$1
+  if [ -z "$city" ]
+  then
+    curl wttr.in/Karachi
+  else
+    curl wttr.in/$city
+  fi
+}
