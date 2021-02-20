@@ -5,23 +5,23 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI Config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable                           " Turn on syntax highlighting.
-filetype plugin on                      " Enable vim to recognize different file types
-colorscheme monokai                     " Color Scheme
-set shortmess+=I                        " Disable the default Vim startup message.
-set showcmd                             " Display an incomplete command
-set hidden                              " Hide the unsaved buffers
-set backspace=indent,eol,start          " Backspace behaves normally
+syntax enable                             " Turn on syntax highlighting.
+filetype plugin on                        " Enable vim to recognize different file types
+colorscheme monokai                       " Color Scheme
+set shortmess+=I                          " Disable the default Vim startup message.
+set showcmd                               " Display an incomplete command
+set hidden                                " Hide the unsaved buffers
+set backspace=indent,eol,start            " Backspace behaves normally
 
 " Finding Files "
 " Provides tab-completion for all file-related tasks
-set path+=server/**,client/**,src/**    " Search down into subfolders
+set path+=server/**,client/**,src/**      " Search down into subfolders
 set path+=public/**
-set wildmenu                            " display completion matches in a status line
+set wildmenu                              " display completion matches in a status line
 
 " Split Config "
-set splitbelow                          " Open new vertical split bottom
-set splitright                          " Open new horizontal splits right
+set splitbelow                            " Open new vertical split bottom
+set splitright                            " Open new horizontal splits right
 nnoremap <silent> <C-Left> :vertical resize +3<CR>
 nnoremap <silent> <C-Right> :vertical resize -3<CR>
 nnoremap <silent> <C-Up> :resize +3<CR>
@@ -30,21 +30,21 @@ nnoremap <silent> <C-Down> :resize -3<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spaces, Tabs and Completion 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=2                           " number of visual spaces per TAB
-set softtabstop=2                       " number of spaces in tab when editing
-set expandtab                           " tabs are spaces, mainly because of python
-set shiftwidth=2                        " tabs when inserted with >>
-filetype indent on                      " Setup for file type indents
-set autoindent                          " enable the autoindent
-set dictionary+=/usr/share/dict/words   " completion from dictionary
+set tabstop=2                             " number of visual spaces per TAB
+set softtabstop=2                         " number of spaces in tab when editing
+set expandtab                             " tabs are spaces, mainly because of python
+set shiftwidth=2                          " tabs when inserted with >>
+filetype indent on                        " Setup for file type indents
+set autoindent                            " enable the autoindent
+set dictionary+=/usr/share/dict/words     " completion from dictionary
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set incsearch                           " search as characters are entered
-set hlsearch                            " highlight matches
-set ignorecase                          " Ignore case in searches by default
-set smartcase                           " But make it case sensitive if an uppercase is entered
+set incsearch                             " search as characters are entered
+set hlsearch                              " highlight matches
+set ignorecase                            " Ignore case in searches by default
+set smartcase                             " But make it case sensitive if an uppercase is entered
 
 " Remove the highlighting when I insert ,<space>
 nnoremap <silent> ,<space> :nohlsearch<CR>
@@ -52,8 +52,8 @@ nnoremap <silent> ,<space> :nohlsearch<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Line Numbering
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set number                              " Show line numbers.
-set relativenumber                      " Show relative line numbers
+set number                                " Show line numbers.
+set relativenumber                        " Show relative line numbers
 
 " Automatic toggling between line number modes "
 augroup numbertoggle
@@ -65,8 +65,8 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Cursor Line and Column Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set cursorline                          " Highlight current line
-set cursorcolumn                        " Highlight cursor column for code indents matching
+set cursorline                            " Highlight current line
+set cursorcolumn                          " Highlight cursor column for code indents matching
 
 " Automatic toggling cursor highlight on different modes 
 augroup cursorlinetoggle
@@ -98,7 +98,7 @@ nnoremap ,/ I// <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " External Vim Configurations
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Be careful to use your own path here instead of mine
 source $HOME/dotfiles/config_vim/autoclose.vim
@@ -113,10 +113,18 @@ source $HOME/dotfiles/config_vim/autoclose.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Ale for code linting and fixing
 let g:ale_linters = { 'javascript': ['standard'] }
 let g:ale_fixers = {'javascript': ['standard']}
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+
+" Coc for Intellisense
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Resources
