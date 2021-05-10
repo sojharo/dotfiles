@@ -30,6 +30,7 @@ download that color scheme or just use the built-in themes which come with vim e
 
 - .gitconfig (inspiration from https://medium.com/usevim/git-and-vimdiff-a762d72ced86)
 - intellisense for vim https://www.freecodecamp.org/news/a-guide-to-modern-web-development-with-neo-vim-333f7efbf8e2/
+- https://samroeca.com/coc-plugin.html
 
 ### Other Vim External Plugins used (Not required)
 
