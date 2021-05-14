@@ -26,6 +26,14 @@ download that color scheme or just use the built-in themes which come with vim e
 
 ![img](https://github.com/sojharo/dotfiles/blob/master/docs/tmux.png)
 
+### For using vimrc file for neovim
+
+Run following commands assuming dotfiles is cloned in home directory
+
+    mkdir ~/.config/nvim
+    cd ~/.config/nvim
+    ln -s ~/dotfiles/nvimrc init.vim
+
 ### TODO
 
 - .gitconfig (inspiration from https://medium.com/usevim/git-and-vimdiff-a762d72ced86)

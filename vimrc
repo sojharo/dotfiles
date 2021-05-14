@@ -133,5 +133,6 @@ nmap <silent> gr <Plug>(coc-references)
 "
 " https://github.com/crusoexia/vim-monokai
 " https://github.com/ParamagicDev/vim-medic_chalk
+" https://github.com/itchyny/landscape.vim
 "
 " vim colorschemes are stored in ~/.vim/colors on macos
