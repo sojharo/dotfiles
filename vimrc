@@ -92,9 +92,9 @@ source $HOME/dotfiles/config_vim/statusline.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " be careful to use your own path here instead of mine
-nnoremap ,route :-1read $HOME/dotfiles/snippets/skeleton.route.js<CR>fi
+nnoremap ;route :-1read $HOME/dotfiles/config_vim/snippets/skeleton.route.js<CR>fi
 inoremap ,log console.log()<left>
-nnoremap ,/ I// <ESC>
+nnoremap ;/ I// <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " External Vim Configurations
