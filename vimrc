@@ -7,7 +7,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                             " Turn on syntax highlighting.
 filetype plugin on                        " Enable vim to recognize different file types
-colorscheme monokai                       " Color Scheme
+set termguicolors                         " Set 24-bit RGB colors
+colorscheme bogster                       " Color Scheme
 set shortmess+=I                          " Disable the default Vim startup message.
 set showcmd                               " Display an incomplete command
 set hidden                                " Hide the unsaved buffers
@@ -133,5 +134,6 @@ nmap <silent> gr <Plug>(coc-references)
 "
 " https://github.com/crusoexia/vim-monokai
 " https://github.com/ParamagicDev/vim-medic_chalk
+" https://github.com/wojciechkepka/bogster
 "
 " vim colorschemes are stored in ~/.vim/colors on macos
