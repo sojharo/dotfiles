@@ -1,5 +1,5 @@
-alias ls='ls -G'
-alias l='ls -l'
+alias ls='ls -G --color'
+alias l='ls -l --color'
 alias x='exit'
 alias grep='grep --color=auto'
 alias cd..='cd ..'
@@ -20,6 +20,8 @@ alias gps='git pull origin staging'
 alias ns='npm start'
 alias nr='npm run'
 
+# docker - remove need of sudo
+alias docker='sudo docker'
+
 # easy navigation
-alias ck='cd ~/RestructureWork' # My Projects Folder
 alias dotfiles='cd ~/dotfiles'
