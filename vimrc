@@ -8,7 +8,7 @@
 syntax enable                             " Turn on syntax highlighting.
 filetype plugin on                        " Enable vim to recognize different file types
 set termguicolors                         " Set 24-bit RGB colors
-colorscheme bogster                       " Color Scheme
+colorscheme monokai                       " Color Scheme
 set shortmess+=I                          " Disable the default Vim startup message.
 set showcmd                               " Display an incomplete command
 set hidden                                " Hide the unsaved buffers
