@@ -2,8 +2,11 @@
 source $HOME/dotfiles/aliases/aliases
 
 # User specific environment and startup programs
-PATH=$PATH:$HOME/bin
-export PATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/bin
+export DOCKER_HOST=/usr/bin/docker
 
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt AUTO_PUSHD                # Push the current directory visited on the stack.

@@ -1,6 +1,7 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "json", "graphql", "css", "markdown"],
   "eslint.autoFixOnSave": true,
+  "css.lint.unknownAtRules": "ignore",
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•"

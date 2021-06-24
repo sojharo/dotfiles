@@ -12,7 +12,7 @@ endfunction
 set statusline=
 set statusline+=%#PmenuSel#
 set statusline+=%{StatuslineGit()}
-set statusline+=%#DiffDelete#
+set statusline+=%#DiffChange#
 set statusline+=\ %f
 set statusline+=%m\
 set statusline+=%=

@@ -20,8 +20,5 @@ alias gps='git pull origin staging'
 alias ns='npm start'
 alias nr='npm run'
 
-# docker - remove need of sudo
-alias docker='sudo docker'
-
 # easy navigation
 alias dotfiles='cd ~/dotfiles'
