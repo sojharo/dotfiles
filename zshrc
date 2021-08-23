@@ -1,9 +1,26 @@
 # alaises
 source $HOME/dotfiles/aliases/aliases
 
+# TODO Organize these paths
 # User specific environment and startup programs
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+# Setting up pyenv
+# https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Setting up React Native
+# https://reactnative.dev/docs/environment-setup
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/bin
 export PATH=/usr/bin:$PATH
@@ -45,6 +62,9 @@ autoload -Uz compinit && compinit
 # autoload predict-on
 # predict-on
 
+# for syntax highlighting of gnome-terminal for files will full permissions
+export LS_COLORS="$LS_COLORS:ow=1;34;45:tw=1;34:"
+
 # For setting up NVM Node Manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -65,3 +85,7 @@ weather() {
     curl wttr.in/$city
   fi
 }
+
+# Easily open deep links in your iOS/Android emulator
+ios_open() { xcrun simctl openurl booted "$@" }
+android_open() { $ANDROID_HOME/platform-tools/adb shell am start -W -a android.intent.action.VIEW -d "$@" }
