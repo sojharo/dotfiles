@@ -29,7 +29,7 @@ nnoremap <silent> <C-Up> :resize +3<CR>
 nnoremap <silent> <C-Down> :resize -3<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Spaces, Tabs and Completion 
+" Spaces, Tabs, folds and Completion 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tabstop=2                             " number of visual spaces per TAB
 set softtabstop=2                         " number of spaces in tab when editing
@@ -38,6 +38,12 @@ set shiftwidth=2                          " tabs when inserted with >>
 filetype indent on                        " Setup for file type indents
 set autoindent                            " enable the autoindent
 set dictionary+=/usr/share/dict/words     " completion from dictionary
+
+" Folding
+set foldmethod=syntax "syntax highlighting items specify folds  
+set foldcolumn=1 "defines 1 col at window left, to indicate folding  
+let javaScript_fold=1 "activate folding by JS syntax  
+set foldlevelstart=99 "start file with all folds opened
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
