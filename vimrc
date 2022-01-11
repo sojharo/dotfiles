@@ -18,6 +18,7 @@ set backspace=indent,eol,start            " Backspace behaves normally
 " Provides tab-completion for all file-related tasks
 set path+=server/**,client/**,src/**      " Search down into subfolders
 set path+=public/**
+set path+=service/**
 set wildmenu                              " display completion matches in a status line
 
 " Split Config "
@@ -145,6 +146,9 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+" Symbol renaming. (sometimes :%s/target/new/g works for me :) )
+nmap <leader>rn <Plug>(coc-rename)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Resources
