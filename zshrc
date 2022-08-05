@@ -30,11 +30,16 @@ export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export JAVA_HOME="$HOME/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.14.1+1/Contents/Home"
 
+export DENO_INSTALL="/Users/sojharomangi/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/bin"
 # export DOCKER_HOST="unix:///run/user/1000/docker.sock"
+
+# Setting up gcloud cli for k9s
+export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt AUTO_PUSHD                # Push the current directory visited on the stack.
