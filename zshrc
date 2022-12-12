@@ -32,6 +32,10 @@ export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.14.1+1/Contents/Home"
 
+export GEM_HOME="$HOME/.gem"
+export PATH="$GEM_HOME/bin:$PATH"
+export PATH="$GEM_HOME/ruby/2.6.0/bin:$PATH"
+
 export DENO_INSTALL="/Users/sojharomangi/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
@@ -40,6 +44,9 @@ export PATH="$PATH:$HOME/bin"
 
 # Setting up gcloud cli for k9s
 export PATH="$PATH:$HOME/google-cloud-sdk/bin"
+
+# Ansible path
+export PATH="$PATH:$HOME/.local/bin"
 
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt AUTO_PUSHD                # Push the current directory visited on the stack.

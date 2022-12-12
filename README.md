@@ -43,9 +43,11 @@ Run following commands assuming dotfiles is cloned in home directory
 - intellisense for vim https://www.freecodecamp.org/news/a-guide-to-modern-web-development-with-neo-vim-333f7efbf8e2/
 - https://samroeca.com/coc-plugin.html
 - Install CTop
+- https://github.com/ctrlpvim/ctrlp.vim
 
 ### Other Vim External Plugins used (Not required)
 
 The following plugins are used by me on my local machine. These are not required in my configuration files. These are just to make my development environment more pleasant. I am listing them here so that they may inspire someone.
 
 - Vim Polyglot
+- Coc.nvim
