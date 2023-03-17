@@ -40,6 +40,9 @@ filetype indent on                        " Setup for file type indents
 set autoindent                            " enable the autoindent
 set dictionary+=/usr/share/dict/words     " completion from dictionary
 
+" In insert mode, enter should confirm the completion shown
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " Folding
 set foldmethod=syntax "syntax highlighting items specify folds  
 set foldcolumn=1 "defines 1 col at window left, to indicate folding  
