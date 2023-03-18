@@ -147,6 +147,13 @@ endfunction
 " Symbol renaming. (sometimes :%s/target/new/g works for me :) )
 nmap <leader>rn <Plug>(coc-rename)
 
+" Configuration for git messenger
+let g:git_messenger_no_default_mappings = v:true
+nmap <leader>b <Plug>(git-messenger)
+
+let g:git_messenger_floating_win_opts = { 'border': 'single' }
+let g:git_messenger_always_into_popup = v:true
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Resources
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

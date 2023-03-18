@@ -13,8 +13,9 @@ find necessary for you. Don't just use the whole files as it is.
 
 I have tried my best to use as less external plugins as possible. So, these configuration files won't break if you use the whole files as it is. However, there are following two plugins which are configured in vimrc.
 
-- Ale plugin for JavaScript linting and formatting using Standardjs.
+- Vim-Polyglot
 - Coc.nvim for Intellisense support
+- Git Messenger https://github.com/rhysd/git-messenger.vim
 
 If you don't need that, just remove the lines under Plugin Settings in vimrc file.
 
@@ -39,15 +40,16 @@ Run following commands assuming dotfiles is cloned in home directory
 
 ### TODO
 
-- .gitconfig (inspiration from https://medium.com/usevim/git-and-vimdiff-a762d72ced86)
-- intellisense for vim https://www.freecodecamp.org/news/a-guide-to-modern-web-development-with-neo-vim-333f7efbf8e2/
 - https://samroeca.com/coc-plugin.html
-- Install CTop
-- https://github.com/ctrlpvim/ctrlp.vim
+- https://github.com/junegunn/fzf
+- https://www.quora.com/Is-there-a-Vim-plugin-that-lets-you-easily-see-the-git-blame-on-the-files-you-are-editing
 
-### Other Vim External Plugins used (Not required)
+### Other tools I use that are not configured here.
 
-The following plugins are used by me on my local machine. These are not required in my configuration files. These are just to make my development environment more pleasant. I am listing them here so that they may inspire someone.
+- CTop
+- K9s
 
-- Vim Polyglot
-- Coc.nvim
+### References
+
+- .gitconfig (inspiration from https://medium.com/usevim/git-and-vimdiff-a762d72ced86)
+- https://www.freecodecamp.org/news/vim-for-people-who-use-visual-studio-code/
