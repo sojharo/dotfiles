@@ -8,7 +8,8 @@
 syntax enable                             " Turn on syntax highlighting.
 filetype plugin on                        " Enable vim to recognize different file types
 set termguicolors                         " Set 24-bit RGB colors
-colorscheme monokai                       " Color Scheme
+set background=dark
+colorscheme PaperColor                    " Color Scheme
 set shortmess+=I                          " Disable the default Vim startup message.
 set showcmd                               " Display an incomplete command
 set hidden                                " Hide the unsaved buffers
@@ -161,6 +162,6 @@ let g:git_messenger_always_into_popup = v:true
 "
 " https://github.com/crusoexia/vim-monokai
 " https://github.com/ParamagicDev/vim-medic_chalk
-" https://github.com/wojciechkepka/bogster
+" https://github.com/NLKNguyen/papercolor-theme
 "
 " vim colorschemes are stored in ~/.vim/colors on macos
