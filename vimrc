@@ -16,7 +16,7 @@ set backspace=indent,eol,start            " Backspace behaves normally
 
 " Finding Files "
 " Provides tab-completion for all file-related tasks
-set path+=server/**,client/**,src/**      " Search down into subfolders
+set path+=server/**,pages/**,src/**      " Search down into subfolders
 set path+=public/**
 set wildmenu                              " display completion matches in a status line
 
@@ -146,9 +146,13 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Use ,k to close the floating window opened to show documentation using K
+
+nnoremap <silent> ,k :call coc#float#close_all()<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Resources
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " For vim colorschemes:
 "
 " https://github.com/crusoexia/vim-monokai
