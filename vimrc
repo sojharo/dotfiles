@@ -8,7 +8,8 @@
 syntax enable                             " Turn on syntax highlighting.
 filetype plugin on                        " Enable vim to recognize different file types
 set termguicolors                         " Set 24-bit RGB colors
-colorscheme monokai                       " Color Scheme
+set background=dark
+colorscheme PaperColor                    " Color Scheme
 set shortmess+=I                          " Disable the default Vim startup message.
 set showcmd                               " Display an incomplete command
 set hidden                                " Hide the unsaved buffers
@@ -18,6 +19,7 @@ set backspace=indent,eol,start            " Backspace behaves normally
 " Provides tab-completion for all file-related tasks
 set path+=server/**,pages/**,src/**      " Search down into subfolders
 set path+=public/**
+set path+=service/**
 set wildmenu                              " display completion matches in a status line
 
 " Split Config "
@@ -38,6 +40,9 @@ set shiftwidth=2                          " tabs when inserted with >>
 filetype indent on                        " Setup for file type indents
 set autoindent                            " enable the autoindent
 set dictionary+=/usr/share/dict/words     " completion from dictionary
+
+" In insert mode, enter should confirm the completion shown
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Folding
 set foldmethod=syntax "syntax highlighting items specify folds  
@@ -121,12 +126,6 @@ source $HOME/dotfiles/config_vim/autoclose.vim
 " Plugin settings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Ale for code linting and fixing
-let g:ale_linters = { 'javascript': ['standard'] }
-let g:ale_fixers = {'javascript': ['standard']}
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-
 " Coc for Intellisense
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -147,8 +146,17 @@ function! s:show_documentation()
 endfunction
 
 " Use ,k to close the floating window opened to show documentation using K
-
 nnoremap <silent> ,k :call coc#float#close_all()<CR>
+
+" Symbol renaming. (sometimes :%s/target/new/g works for me :) )
+nmap <leader>rn <Plug>(coc-rename)
+
+" Configuration for git messenger
+let g:git_messenger_no_default_mappings = v:true
+nmap <leader>b <Plug>(git-messenger)
+
+let g:git_messenger_floating_win_opts = { 'border': 'single' }
+let g:git_messenger_always_into_popup = v:true
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Resources
@@ -157,6 +165,6 @@ nnoremap <silent> ,k :call coc#float#close_all()<CR>
 "
 " https://github.com/crusoexia/vim-monokai
 " https://github.com/ParamagicDev/vim-medic_chalk
-" https://github.com/wojciechkepka/bogster
+" https://github.com/NLKNguyen/papercolor-theme
 "
 " vim colorschemes are stored in ~/.vim/colors on macos

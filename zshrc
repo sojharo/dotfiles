@@ -2,29 +2,51 @@
 source $HOME/dotfiles/aliases/aliases
 
 # TODO Organize these paths
+export PATH="/usr/bin:$PATH"
+
 # User specific environment and startup programs
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # Setting up pyenv
-# https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if command -v pyenv 1>/dev/null 2>&1; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+fi
+
+# For linux setup
+# NOTE: above and this should be in if and else blocks based on OS
+#   # https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/
+#   eval "$(pyenv init -)"
+#   eval "$(pyenv virtualenv-init -)"
 
 # Setting up React Native
 # https://reactnative.dev/docs/environment-setup
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# export ANDROID_HOME="$HOME/Android/Sdk" # This is for linux, it should be in if and else blocks later
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/tools/bin"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.14.1+1/Contents/Home"
 
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/bin
-export PATH=/usr/bin:$PATH
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
+export GEM_HOME="$HOME/.gem"
+export PATH="$GEM_HOME/bin:$PATH"
+export PATH="$GEM_HOME/ruby/2.6.0/bin:$PATH"
+
+export DENO_INSTALL="/Users/sojharomangi/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/bin"
+# export DOCKER_HOST="unix:///run/user/1000/docker.sock"
+
+# Setting up gcloud cli for k9s
+export PATH="$PATH:$HOME/google-cloud-sdk/bin"
+
+# Ansible path
+export PATH="$PATH:$HOME/.local/bin"
 
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt AUTO_PUSHD                # Push the current directory visited on the stack.
@@ -89,3 +111,9 @@ weather() {
 # Easily open deep links in your iOS/Android emulator
 ios_open() { xcrun simctl openurl booted "$@" }
 android_open() { $ANDROID_HOME/platform-tools/adb shell am start -W -a android.intent.action.VIEW -d "$@" }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
