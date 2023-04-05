@@ -17,7 +17,7 @@ set backspace=indent,eol,start            " Backspace behaves normally
 
 " Finding Files "
 " Provides tab-completion for all file-related tasks
-set path+=server/**,client/**,src/**      " Search down into subfolders
+set path+=server/**,pages/**,src/**      " Search down into subfolders
 set path+=public/**
 set path+=service/**
 set wildmenu                              " display completion matches in a status line
@@ -145,6 +145,9 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Use ,k to close the floating window opened to show documentation using K
+nnoremap <silent> ,k :call coc#float#close_all()<CR>
+
 " Symbol renaming. (sometimes :%s/target/new/g works for me :) )
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -157,7 +160,7 @@ let g:git_messenger_always_into_popup = v:true
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other Resources
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " For vim colorschemes:
 "
 " https://github.com/crusoexia/vim-monokai
