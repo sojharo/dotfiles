@@ -32,7 +32,7 @@ download that color scheme or just use the built-in themes which come with vim e
 
 ### For using vimrc file for neovim
 
-Run following commands assuming dotfiles is cloned in home directory
+Run following commands assuming dotfiles repo is cloned in home directory
 
     mkdir ~/.config/nvim
     cd ~/.config/nvim
@@ -44,10 +44,13 @@ Run following commands assuming dotfiles is cloned in home directory
 - https://github.com/junegunn/fzf
 - https://www.quora.com/Is-there-a-Vim-plugin-that-lets-you-easily-see-the-git-blame-on-the-files-you-are-editing
 
-### Other tools I use that are not configured here.
+### Other tools I use that may not be configured here.
 
 - CTop
 - K9s
+- fzf
+- tree
+- fd (using for fzf, maybe replace with ripgrep later)
 
 ### References
 

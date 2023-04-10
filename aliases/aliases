@@ -24,3 +24,6 @@ alias nr='npm run'
 
 # easy navigation
 alias dotfiles='cd ~/dotfiles'
+
+# Temp: FZF
+alias fzf-tmux='fzf-tmux -p 80%'

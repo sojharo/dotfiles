@@ -1,4 +1,4 @@
-set laststatus=2                        " Always show the status line at the bottom,
+set laststatus=3                        " Always show the status line at the bottom,
 
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")

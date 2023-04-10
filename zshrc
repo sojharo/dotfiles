@@ -120,3 +120,47 @@ if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-clou
 
 # Following is completion for kubectl
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+# fzf keybindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzf settings
+export FZF_DEFAULT_OPTS="
+  --color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672
+  --height 60% --layout=reverse --border --margin=1 --padding=1"
+
+export FZF_CTRL_T_OPTS="
+  --preview 'cat -n {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# CTRL-/ to toggle small preview window to see the full command
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window down,3,wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'cat -n {}' "$@" ;;
+  esac
+}
+
+export FZF_TMUX_OPTS=' -p 80%'  # This does not work, need to investigate, I have alias now for fzf-tmux to open in popup
+
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+
+# TODO: when setup ripgrep
+# export FZF_DEFAULT_COMMAND='rg --color always --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+
