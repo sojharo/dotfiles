@@ -11,11 +11,12 @@ find necessary for you. Don't just use the whole files as it is.
 
 ## Dependencies for VIM
 
-I have tried my best to use as less external plugins as possible. So, these configuration files won't break if you use the whole files as it is. However, there are following two plugins which are configured in vimrc.
+I have tried my best to use as less external plugins as possible. So, these configuration files won't break if you use the whole files as it is. However, there are following plugins which are configured in vimrc.
 
 - Vim-Polyglot
 - Coc.nvim for Intellisense support
 - Git Messenger https://github.com/rhysd/git-messenger.vim
+- Copilot https://github.com/github/copilot.vim
 
 If you don't need that, just remove the lines under Plugin Settings in vimrc file.
 
