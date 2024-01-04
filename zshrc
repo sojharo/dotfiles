@@ -127,10 +127,12 @@ if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-clou
 # fzf settings
 export FZF_DEFAULT_OPTS="
   --color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672
-  --height 60% --layout=reverse --border --margin=1 --padding=1"
+  --height 60% --layout=reverse --border --margin=1 --padding=1
+  --preview 'bat --color=always --style=numbers --line-range=:500 {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 export FZF_CTRL_T_OPTS="
-  --preview 'cat -n {}'
+  --preview 'bat --color=always --style=numbers --line-range=:500 {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 # CTRL-/ to toggle small preview window to see the full command
@@ -153,7 +155,7 @@ _fzf_comprun() {
     cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
     export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
     ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview 'cat -n {}' "$@" ;;
+    *)            fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' "$@" ;;
   esac
 }
 

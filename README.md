@@ -51,6 +51,7 @@ Run following commands assuming dotfiles repo is cloned in home directory
 - K9s
 - fzf
 - tree
+- bat (using for fzf)
 - fd (using for fzf, maybe replace with ripgrep later)
 
 ### References
