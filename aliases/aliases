@@ -1,7 +1,7 @@
 alias ls='ls -G --color'
 alias l='ls -l --color'
 alias x='exit'
-alias grep='grep --color=auto'
+alias grep='grep -n --color=auto'
 alias cd..='cd ..'
 
 # git aliases
