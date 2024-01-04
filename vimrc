@@ -160,6 +160,7 @@ let g:git_messenger_always_into_popup = v:true
 
 " FZF settings
 set rtp+=/opt/homebrew/opt/fzf
+nmap <leader>f :call fzf#run({'sink': 'e', 'options': '--height 40% --reverse --border'})<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
