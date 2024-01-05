@@ -9,7 +9,7 @@ syntax enable                             " Turn on syntax highlighting.
 filetype plugin on                        " Enable vim to recognize different file types
 set termguicolors                         " Set 24-bit RGB colors
 set background=dark
-colorscheme PaperColor                    " Color Scheme
+colorscheme codedark                      " Color Scheme
 set shortmess+=I                          " Disable the default Vim startup message.
 set showcmd                               " Display an incomplete command
 set hidden                                " Hide the unsaved buffers
@@ -171,5 +171,6 @@ nmap <leader>f :call fzf#run({'sink': 'e', 'options': '--height 40% --reverse --
 " https://github.com/crusoexia/vim-monokai
 " https://github.com/ParamagicDev/vim-medic_chalk
 " https://github.com/NLKNguyen/papercolor-theme
+" https://github.com/tomasiser/vim-code-dark *
 "
 " vim colorschemes are stored in ~/.vim/colors on macos
