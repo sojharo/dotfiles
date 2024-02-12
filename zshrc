@@ -42,7 +42,9 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/bin"
 # export DOCKER_HOST="unix:///run/user/1000/docker.sock"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [ -d "/home/linuxbrew/" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 # Setting up gcloud cli for k9s
 export PATH="$PATH:$HOME/google-cloud-sdk/bin"
