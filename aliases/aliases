@@ -27,3 +27,6 @@ alias dotfiles='cd ~/dotfiles'
 
 # Temp: FZF
 alias fzf-tmux='fzf-tmux -p 80%'
+
+# Awsume
+alias awsume=". awsume"
