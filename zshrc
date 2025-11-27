@@ -1,16 +1,28 @@
 # ------------------------------------------------
 # Aliases
 # ------------------------------------------------
+
 source "$HOME/dotfiles/aliases/aliases"
 
 # ------------------------------------------------
 # Basic PATH Setup
 # ------------------------------------------------
+# Prepend /usr/bin to prefer system binaries in some cases,
+# and always include $HOME/bin for local user scripts.
 export PATH="/usr/bin:$PATH"
 export PATH="$PATH:$HOME/bin"
 
 # ------------------------------------------------
-# OS Detection
+# Normalize PATH to remove accidental duplicates
+# ------------------------------------------------
+# Convert PATH to zsh array, make it unique, then re-join.
+# This prevents the same directory appearing multiple times.
+typeset -U path
+path=(${(s/:/)PATH})      # split PATH on ':' into array named 'path'
+PATH="${(j/:/)path}"      # join back into a colon-separated string
+
+# ------------------------------------------------
+# OS Detection (used to gate OS-specific blocks)
 # ------------------------------------------------
 uname_str="$(uname -s)"
 case "$uname_str" in
@@ -22,54 +34,70 @@ esac
 # ------------------------------------------------
 # Homebrew Setup (macOS + optional Linuxbrew)
 # ------------------------------------------------
+# If Homebrew is installed, evaluate its shellenv so brew-managed
+# packages (like openjdk, bat, fd, etc.) appear on PATH.
 if [[ "$OS_TYPE" == "macos" ]]; then
-  # Homebrew (ARM Macs default path)
+  # Typical ARM mac path; Intel macs may have /usr/local as well.
   if [ -d /opt/homebrew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 elif [[ "$OS_TYPE" == "linux" ]]; then
+  # Linuxbrew (optional) location
   if [ -d "/home/linuxbrew/.linuxbrew" ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 fi
 
+# If you want Homebrew's recommended persistent change for macOS:
+# Add these lines to ~/.zprofile (run once):
+#   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+# The eval above is enough for the current shell; adding to zprofile
+# ensures it applies to login shells (recommended on macOS).
+
 # ------------------------------------------------
-# Go Setup
+# Go (GOPATH / go bin)
 # ------------------------------------------------
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:/usr/local/go/bin"
 
 # ------------------------------------------------
-# Pyenv Setup
+# Pyenv (Python version manager)
 # ------------------------------------------------
+# Only set up pyenv if it's installed.
 if command -v pyenv >/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
 
+  # On macOS, pyenv's recommended initialization for modern setups:
   if [[ "$OS_TYPE" == "macos" ]]; then
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
   else
+    # Linux: include virtualenv integration if available
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    eval "$(pyenv virtualenv-init -)" 2>/dev/null || true
   fi
 fi
 
 # ------------------------------------------------
-# Android / Java Setup
+# Android / Java (React Native dev)
 # ------------------------------------------------
+# Set ANDROID_HOME conditionally per OS (macOS vs Linux)
 if [[ "$OS_TYPE" == "linux" ]]; then
   export ANDROID_HOME="$HOME/Android/Sdk"
 else
   export ANDROID_HOME="$HOME/Library/Android/sdk"
 fi
+
+# Add Android SDK tools and platform-tools to PATH
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
-# Java (macOS Homebrew path)
+# If you install Java via Homebrew on macOS, you may want to set JAVA_HOME.
+# Example (replace path/version as needed):
 if [[ "$OS_TYPE" == "macos" ]]; then
   export JAVA_HOME="/opt/homebrew/Cellar/openjdk@17/17.0.13/libexec/openjdk.jdk/Contents/Home"
 fi
@@ -77,6 +105,7 @@ fi
 # ------------------------------------------------
 # Ruby Gems
 # ------------------------------------------------
+# Keep gem binaries in user's PATH (avoid interfering with system gems)
 export GEM_HOME="$HOME/.gem"
 export PATH="$GEM_HOME/bin:$PATH"
 export PATH="$GEM_HOME/ruby/2.6.0/bin:$PATH"
@@ -90,96 +119,117 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # ------------------------------------------------
 # Google Cloud SDK
 # ------------------------------------------------
+# Add google-cloud-sdk bin and, if present, source its helper scripts.
 export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 
-# The next line updates PATH for the Google Cloud SDK.
-[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && ". $HOME/google-cloud-sdk/path.zsh.inc"
-# The next line enables shell command completion for gcloud.
-[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && ". $HOME/google-cloud-sdk/completion.zsh.inc"
+# Update PATH for gcloud if the helper exists (this also sets up Python envs)
+[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && . "$HOME/google-cloud-sdk/path.zsh.inc"
+# Enable gcloud command completion if available
+[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && . "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 # ------------------------------------------------
-# Ansible
+# Ansible / Local Python user installs
 # ------------------------------------------------
 export PATH="$PATH:$HOME/.local/bin"
 
 # ------------------------------------------------
 # Zsh History & Directory Navigation
 # ------------------------------------------------
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-setopt AUTO_PUSHD                # Push the current directory visited on the stack.
-setopt PUSHD_IGNORE_DUPS         # Do not store duplicates in the stack.
-setopt PUSHD_SILENT              # Do not print the directory stack after pushd or popd.
-alias d='dirs -v'
-for index ({1..9}); do alias "$index"="cd +${index}"; done; unset index
+# Prevent duplicate history lines, enable pushd stack features, and silence pushd output.
+setopt HIST_SAVE_NO_DUPS
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
 
-# What does the above do?
-#
-# Every directory visited will populate the stack.
-# When you use the alias d, it will display the directories on the stack prefixed with a number.
-# The line for index ({1..9}) alias "$index"="cd +${index}"; unset index will create aliases from 1 to 9. They will allow you to jump directly in whatever directory on your stack.
+alias d='dirs -v'        # show directory stack with indexes
+
+# Create aliases 1..9 to jump to numbered entries on the pushd stack
+# Example: '2' jumps to the 2nd entry on the dirs list.
+for index in {1..9}; do
+  alias "$index"="cd +${index}"
+done
+unset index
+
+# NOTE:
+# Every directory visited will populate the stack. Using 'd' lists them:
+#   d
+# Then run e.g. '3' to jump to the 3rd directory on the stack.
 
 # ------------------------------------------------
 # Keybindings & Vim Mode
 # ------------------------------------------------
-bindkey -v
-export KEYTIMEOUT=1
+bindkey -v               # enter vi keybindings in the shell
+export KEYTIMEOUT=1      # reduce key chord delay for vi-mode
 
-# Cursor Mode (like vim)
+# Cursor Mode (loads a small prompt/visual helper from our dotfiles)
 fpath=($HOME/dotfiles/config_zsh $fpath)
 autoload -Uz cursor_mode; cursor_mode
 
-# Prompt
+# Custom prompt loader (autoloaded from our dotfiles)
 autoload -Uz myprompt; myprompt
 
 # ------------------------------------------------
 # Git Completion
 # ------------------------------------------------
+# Use our custom git completions file and ensure the fpath contains it
 zstyle ':completion:*:*:git:' script "$HOME/dotfiles/completions/git/git-completion.bash"
 fpath=($HOME/dotfiles/completions/git $fpath)
+
 autoload -Uz compinit && compinit
 
 # ------------------------------------------------
-# LS Colors
+# LS_COLORS tweaks
 # ------------------------------------------------
-export LS_COLORS="$LS_COLORS:ow=1;34;45:tw=1;34:"
+# Make 'ow' (others writable) and 'tw' (sticky + world writeable) directories show clearly.
+export LS_COLORS="${LS_COLORS:-}:ow=1;34;45:tw=1;34:"
 
 # ------------------------------------------------
-# NVM
+# NVM (Node Version Manager)
 # ------------------------------------------------
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Load nvm and its bash completion if present
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
 # ------------------------------------------------
 # User Functions
 # ------------------------------------------------
 today() {
+  # Prints a friendly current date
   echo -n "Today's date is: "
   date +"%A, %B %-d, %Y"
 }
 
 weather() {
+  # Quick wttr.in lookup. Usage: weather or weather <city>
   local city=$1
   if [ -z "$city" ]; then
-    curl wttr.in/Karachi
+    curl --silent --show-error wttr.in/Karachi
   else
-    curl wttr.in/$city
+    curl --silent --show-error "wttr.in/${city}"
   fi
 }
 
-# Easily open deep links in your iOS/Android emulator
-ios_open() { xcrun simctl openurl booted "$@" }
-android_open() { "$ANDROID_HOME/platform-tools/adb" shell am start -W -a android.intent.action.VIEW -d "$@" }
-
-# kubectl
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+# Easily open deep links in iOS / Android emulators.
+# ios_open requires Xcode command line tools; android_open requires adb in $ANDROID_HOME/platform-tools
+ios_open()    { xcrun simctl openurl booted "$@" }
+android_open(){ "$ANDROID_HOME/platform-tools/adb" shell am start -W -a android.intent.action.VIEW -d "$@" 2>/dev/null || true }
 
 # ------------------------------------------------
-# FZF
+# kubectl completion
 # ------------------------------------------------
+# Source kubectl completion only when kubectl exists to avoid errors.
+if command -v kubectl >/dev/null 2>&1; then
+  source <(kubectl completion zsh)
+fi
+
+# ------------------------------------------------
+# fzf (fuzzy finder)
+# ------------------------------------------------
+# Source fzf if installed
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# fzf settings
+# fzf appearance + behavior options
 export FZF_DEFAULT_OPTS="
   --color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672
   --height 60% --layout=reverse --border --margin=1 --padding=1
@@ -214,17 +264,16 @@ _fzf_comprun() {
   esac
 }
 
-export FZF_TMUX_OPTS=' -p 80%'  # (check again) This does not work, need to investigate, I have alias now for fzf-tmux to open in popup
+export FZF_TMUX_OPTS=' -p 80%'  # Note: this may need tweaking for our tmux layout
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
 # TODO: when setup ripgrep
 # export FZF_DEFAULT_COMMAND='rg --color always --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-
 # ------------------------------------------------
-# pnpm
+# pnpm (package manager)
 # ------------------------------------------------
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
+  *":$PNPM_HOME:"*) ;;   # already present
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
